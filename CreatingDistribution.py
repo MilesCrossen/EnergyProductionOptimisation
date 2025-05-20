@@ -10,6 +10,15 @@ NUM_SIMULATIONS = 5
 # Dictionary to store station weightings (init -> 1.0), will add sim annealing later tho
 station_weightings = {}
 
+def load_optimized_weightings(filepath="optimization_results/optimal_weightings.csv"):
+    try:
+        df = pd.read_csv(filepath)
+        for _, row in df.iterrows():
+            station_weightings[row['Station_Parameter']] = row['Optimal_Weight']
+        print("Loaded optimized station weightings.")
+    except Exception as e:
+        print(f"Could not load optimized weightings: {e}")
+
 def parse_dist_params(param_str):
     """
     Parse distribution parameters from string format in CSV.
@@ -261,6 +270,8 @@ def main():
     Main function to run the simulations and generate plots.
     """
     print("Starting distribution simulation process...")
+
+    load_optimized_weightings()
 
     # Load station information from FourierResults.csv
     stations = load_fourier_results()

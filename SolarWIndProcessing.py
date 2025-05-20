@@ -245,7 +245,7 @@ def analyze_fourier(file_path, column_name, data_type='unknown', csv_filename="F
 
 # run fourier analysis when this gets executed
 if __name__ == "__main__":
-    file_path = "WeatherAthenryProcessed.csv"  # replace with the actual file path
+    file_path = "WeatherFinnerProcessed.csv"  # replace with the actual file path
     csv_filename = "FourierResults.csv"  # file to store results
 
     # Wind data - use power_wind column
